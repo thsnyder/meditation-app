@@ -149,6 +149,9 @@
       opacity: 0;
       animation: cardFade 0.8s ease-out forwards;
       overflow: hidden;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
     }
 
     .card::before {
@@ -157,15 +160,36 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      bottom: 0;
+      border-radius: 30px;
+      padding: 2px;
       background: var(--primary-gradient);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .card::after {
+      content: '✨';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      animation: sparkle 2s infinite ease-in-out;
+      z-index: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: var(--card-hover-shadow);
     }
 
     .card:hover::before {
-      transform: scaleX(1);
+      background: var(--primary-gradient);
+      opacity: 1;
     }
 
     .card:nth-child(1) { animation-delay: 1.2s; }
@@ -180,11 +204,6 @@
         opacity: 1;
         transform: scale(1);
       }
-    }
-
-    .card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: var(--card-hover-shadow);
     }
 
     .card-title {
@@ -252,15 +271,6 @@
 
     .play-button:hover .icon {
       transform: scale(1.1);
-    }
-
-    .card::after {
-      content: '✨';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      animation: sparkle 2s infinite ease-in-out;
     }
 
     @keyframes sparkle {

@@ -18,7 +18,7 @@ A meditation application designed specifically for IT managers, helping them fin
 git clone https://github.com/thsnyder/meditation-app.git
 ```
 
-2. Open `meditation-app.html` in your web browser
+2. Open `index.html` in your web browser
 
 ## Audio Files
 

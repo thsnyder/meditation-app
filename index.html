@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calmmand Line | IT Manager Meditation App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Files.com brand colors */
+      --primary-red: #C11F32;
+      --primary-red-light: #EE2B38;
+      --secondary-gray: #B8A8A8;
+      --text-dark: #000000;
+      --white: #FFFFFF;
+      
+      /* Gradients and shadows */
+      --primary-gradient: linear-gradient(135deg, var(--primary-red), var(--primary-red-light));
+      --card-bg: linear-gradient(135deg, var(--white), #FFF5F5);
+      --card-shadow: 0 12px 40px rgba(193, 31, 50, 0.1), 0 0 30px rgba(255, 255, 255, 0.5);
+      --card-hover-shadow: 0 14px 45px rgba(193, 31, 50, 0.2), 0 0 40px rgba(255, 255, 255, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    header {
+      text-align: center;
+      padding: 6rem 1rem;
+      background: var(--primary-gradient);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(193, 31, 50, 0.2);
+      transform: translateY(-20px);
+      opacity: 0;
+      animation: slideDownFade 1s ease-out 0.5s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.1;
+    }
+
+    @keyframes slideDownFade {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header p {
+      font-size: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 5rem 3rem;
+      animation: fadeInUp 1.5s ease-out 1s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      margin-top: 4rem;
+      font-size: 2.5rem;
+      color: var(--primary-red);
+      border-bottom: 3px solid var(--primary-red);
+      padding-bottom: 0.75rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--primary-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: borderGrow 1s ease-out forwards;
+    }
+
+    @keyframes borderGrow {
+      to { transform: scaleX(1); }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: 30px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+      position: relative;
+      opacity: 0;
+      animation: cardFade 0.8s ease-out forwards;
+      overflow: hidden;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 30px;
+      padding: 2px;
+      background: var(--primary-gradient);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .card::after {
+      content: '✨';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      animation: sparkle 2s infinite ease-in-out;
+      z-index: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .card:hover::before {
+      background: var(--primary-gradient);
+      opacity: 1;
+    }
+
+    .card:nth-child(1) { animation-delay: 1.2s; }
+    .card:nth-child(2) { animation-delay: 1.4s; }
+    .card:nth-child(3) { animation-delay: 1.6s; }
+    .card:nth-child(4) { animation-delay: 1.8s; }
+    .card:nth-child(5) { animation-delay: 2s; }
+    .card:nth-child(6) { animation-delay: 2.2s; }
+
+    @keyframes cardFade {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .card-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-red);
+      transition: color 0.3s ease;
+    }
+
+    .card:hover .card-title {
+      color: var(--primary-red-light);
+    }
+
+    .card-text {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+      color: var(--secondary-gray);
+      margin-bottom: 2rem;
+    }
+
+    .play-button {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--primary-red);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(193, 31, 50, 0.2);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .play-button:hover {
+      background: var(--primary-red-light);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(193, 31, 50, 0.3);
+    }
+
+    .play-button.playing {
+      background: var(--primary-red-light);
+    }
+
+    .play-button .icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .play-button:hover .icon {
+      transform: scale(1.1);
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    .audio-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+      display: none;
+      align-items: center;
+      gap: 1rem;
+      z-index: 1000;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .audio-player.visible {
+      display: flex;
+      transform: translateY(0);
+    }
+
+    .audio-player .title {
+      font-weight: 600;
+      color: var(--primary-red);
+    }
+
+    .audio-player .progress {
+      flex: 1;
+      height: 4px;
+      background: #F5F5F5;
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .audio-player .progress-bar {
+      height: 100%;
+      background: var(--primary-red);
+      width: 0;
+      transition: width 0.1s linear;
+    }
+
+    .audio-player .time {
+      font-size: 0.9rem;
+      color: var(--secondary-gray);
+    }
+
+    .audio-player .controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .audio-player button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary-red);
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .audio-player button:hover {
+      background: #FFF5F5;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+      .card {
+        padding: 2rem;
+      }
+      .audio-player {
+        padding: 1rem;
+      }
+      .audio-player .title {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧘‍♂️ Calmmand Line</h1>
+    <p>The world's first meditation app for IT managers.</p>
+  </header>
+
+  <div class="container">
+    <h2>Daily De-Stress Sessions</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">The Printer Is Online</div>
+        <div class="card-text">Visualize a world where the printer just works—no flashing red lights, no paper jams.</div>
+        <div class="card-meta"><span>Tags: Printing, Calm</span><span>Length: 2 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">Patch Tuesday Serenity</div>
+        <div class="card-text">Updates install flawlessly. Users restart without complaint. Bliss.</div>
+        <div class="card-meta"><span>Tags: Updates, Peace</span><span>Length: 3 min</span></div>
+        <button class="play-button" onclick="document.getElementById('patch-audio').play()">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">The Ticket Queue is Empty</div>
+        <div class="card-text">No new tickets. No follow-ups. Just silence.</div>
+        <div class="card-meta"><span>Tags: Helpdesk, Silence</span><span>Length: 4 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+    </div>
+    <h2>Crisis Calming Interventions</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">No One Changed the Firewall Rules</div>
+        <div class="card-text">Feel the harmony of untouched config and unbroken access.</div>
+        <div class="card-meta"><span>Tags: Firewall, Stability</span><span>Length: 3 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">DNS is Resolving Perfectly</div>
+        <div class="card-text">Names become IPs. Fast. Effortless. Divine.</div>
+        <div class="card-meta"><span>Tags: Networking, Zen</span><span>Length: 2 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">Everything Pings</div>
+        <div class="card-text">Every server. Every time. Echo replies of peace.</div>
+        <div class="card-meta"><span>Tags: Monitoring, Health</span><span>Length: 2 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">End User Has Turned It Off and On Again</div>
+        <div class="card-text">Without being asked. Harmony has been achieved.</div>
+        <div class="card-meta"><span>Tags: End Users, Miracles</span><span>Length: 3 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+    </div>
+
+    <h2>Vision Boards for Ideal IT States</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">Zero Meetings, 100% Uptime</div>
+        <div class="card-text">Slack is silent. Zoom is down. But everything just works.</div>
+        <div class="card-meta"><span>Tags: Productivity, Bliss</span><span>Length: 4 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">Single Pane of Glass</div>
+        <div class="card-text">All systems unified. Nothing missed. The dashboard of dreams.</div>
+        <div class="card-meta"><span>Tags: Monitoring, Clarity</span><span>Length: 3 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">Users Read the Documentation</div>
+        <div class="card-text">They follow instructions. Troubleshoot themselves. You rest easy.</div>
+        <div class="card-meta"><span>Tags: Education, Empowerment</span><span>Length: 3 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+    </div>
+
+    <h2>Emergency Grounding Tracks</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">The Outage is Not Your Fault</div>
+        <div class="card-text">Let go of guilt. Accept the chaos. You didn't break it.</div>
+        <div class="card-meta"><span>Tags: Resilience, Release</span><span>Length: 5 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">The CEO Forgot Their Password Again</div>
+        <div class="card-text">It's okay. Reset it. Repeat the cycle. Smile.</div>
+        <div class="card-meta"><span>Tags: Humor, Patience</span><span>Length: 2 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">VPN Just Works</div>
+        <div class="card-text">Remote users log in. No calls. No complaints. Just peace.</div>
+        <div class="card-meta"><span>Tags: Access, Relief</span><span>Length: 3 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+    </div>
+
+    <h2>Bonus Tracks</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">Zen and the Art of Server Maintenance</div>
+        <div class="card-text">The fans whisper. The logs are clean. The Zen flows.</div>
+        <div class="card-meta"><span>Tags: Servers, Mindfulness</span><span>Length: 4 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">Ctrl + Alt + Delete Your Stress</div>
+        <div class="card-text">Reboot your soul. Force quit your anxiety.</div>
+        <div class="card-meta"><span>Tags: Reset, Balance</span><span>Length: 2 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">Esc… Just Esc</div>
+        <div class="card-text">The escape key is a path to enlightenment.</div>
+        <div class="card-meta"><span>Tags: Escape, Peace</span><span>Length: 3 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">Let That Alert Go</div>
+        <div class="card-text">You've seen the log. You've acknowledged it. Let it float away.</div>
+        <div class="card-meta"><span>Tags: Alerts, Acceptance</span><span>Length: 2 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">Ping. Pong. Peace.</div>
+        <div class="card-text">Find rhythm in uptime. Back and forth. Connection eternal.</div>
+        <div class="card-meta"><span>Tags: Connectivity, Flow</span><span>Length: 3 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+      <div class="card">
+        <div class="card-title">SLA Nirvana</div>
+        <div class="card-text">99.999% uptime. Promised. Delivered. Enlightenment guaranteed.</div>
+        <div class="card-meta"><span>Tags: Uptime, Enlightenment</span><span>Length: 4 min</span></div>
+        <button class="play-button">▶ Play</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="audio-player">
+    <div class="title">Now Playing: <span class="current-title"></span></div>
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+    <div class="time">
+      <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+    </div>
+    <div class="controls">
+      <button class="prev">⏮</button>
+      <button class="play-pause">▶</button>
+      <button class="next">⏭</button>
+    </div>
+  </div>
+
+  <script src="meditation-app.js"></script>
+</body>
+</html>

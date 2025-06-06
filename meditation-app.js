@@ -17,11 +17,11 @@ class AudioPlayer {
     this.tracks = [
       {
         title: 'Patch Tuesday Serenity',
-        src: 'patch-tuesday-serenity.mp3'
+        src: 'audio/patch-tuesday-serenity.mp3'
       },
       {
         title: 'The Ticket Queue is Empty',
-        src: 'the-ticket-queue-is-empty.mp3'
+        src: 'audio/the-ticket-queue-is-empty.mp3'
       }
     ];
     

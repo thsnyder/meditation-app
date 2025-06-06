@@ -143,15 +143,15 @@
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       min-height: 320px;
       position: relative;
       opacity: 0;
       animation: cardFade 0.8s ease-out forwards;
       overflow: hidden;
-      border: 2px solid transparent;
+      border: 0px solid transparent;
       background-clip: padding-box;
       position: relative;
+      transform-origin: center;
     }
 
     .card::before {
@@ -170,26 +170,42 @@
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
+      transition: opacity 0.4s ease;
+      opacity: 0.7;
     }
 
-    .card::after {
-      content: '✨';
-      font-size: 1.5rem;
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      animation: sparkle 2s infinite ease-in-out;
-      z-index: 1;
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card-content h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--primary-red);
+    }
+
+    .card-content p {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-dark);
     }
 
     .card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: var(--card-hover-shadow);
+      transform: translateY(-8px) scale(1.05) rotate(0.5deg);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     }
 
     .card:hover::before {
       background: var(--primary-gradient);
       opacity: 1;
+    }
+
+    .card:hover .play-button {
+      transform: scale(1.15);
+      background: var(--primary-red-light);
     }
 
     .card:nth-child(1) { animation-delay: 1.2s; }
@@ -271,11 +287,6 @@
 
     .play-button:hover .icon {
       transform: scale(1.1);
-    }
-
-    @keyframes sparkle {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.5); }
     }
 
     .audio-player {
@@ -397,6 +408,66 @@
     .attribution a:hover {
       text-decoration: underline;
     }
+
+    .benefits-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 4rem auto;
+      max-width: 1200px;
+      padding: 0 2rem;
+    }
+
+    .benefit-card {
+      text-align: center;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+      cursor: pointer;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-8px) scale(1.05) rotate(0.5deg);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefit-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-red);
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.2);
+    }
+
+    .benefit-title {
+      font-size: 1.5rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .benefit-description {
+      color: var(--text-dark);
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-section {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 <body>
@@ -405,137 +476,174 @@
     <p>The world's first meditation app for IT managers.</p>
   </header>
 
+  <div class="benefits-section">
+    <div class="benefit-card" onclick="document.querySelector('.container').scrollIntoView({ behavior: 'smooth' })">
+      <div class="benefit-icon">🧘‍♂️</div>
+      <h3 class="benefit-title">Zen Mode: Activated</h3>
+      <p class="benefit-description">When the server room is on fire and your coffee is cold, find your inner peace. Because screaming into the void is so 2023.</p>
+    </div>
+    <div class="benefit-card" onclick="document.querySelector('.container').scrollIntoView({ behavior: 'smooth' })">
+      <div class="benefit-icon">⚡️</div>
+      <h3 class="benefit-title">Laser Focus</h3>
+      <p class="benefit-description">Debug like a ninja, deploy like a boss. Your attention span will be longer than your last system uptime.</p>
+    </div>
+    <div class="benefit-card" onclick="document.querySelector('.container').scrollIntoView({ behavior: 'smooth' })">
+      <div class="benefit-icon">🤝</div>
+      <h3 class="benefit-title">Patience Level: IT Manager</h3>
+      <p class="benefit-description">Handle "I forgot my password" for the 1000th time without losing your cool. Your zen will be stronger than your firewall.</p>
+    </div>
+  </div>
+
   <div class="container">
     <h2>Daily De-Stress Sessions</h2>
     <div class="card-grid">
       <div class="card">
-        <div class="card-title">The Printer Is Online</div>
-        <div class="card-text">Visualize a world where the printer just works—no flashing red lights, no paper jams.</div>
-        <div class="card-meta"><span>Tags: Printing, Calm</span><span>Length: 2 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>The Printer Is Online</h2>
+          <p>Visualize a world where the printer just works—no flashing red lights, no paper jams.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">Patch Tuesday Serenity</div>
-        <div class="card-text">Updates install flawlessly. Users restart without complaint. Bliss.</div>
-        <div class="card-meta"><span>Tags: Updates, Peace</span><span>Length: 3 min</span></div>
-        <button class="play-button" onclick="document.getElementById('patch-audio').play()">▶ Play</button>
+        <div class="card-content">
+          <h2>Patch Tuesday Serenity</h2>
+          <p>Updates install flawlessly. Users restart without complaint. Bliss.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">The Ticket Queue is Empty</div>
-        <div class="card-text">No new tickets. No follow-ups. Just silence.</div>
-        <div class="card-meta"><span>Tags: Helpdesk, Silence</span><span>Length: 4 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>The Ticket Queue is Empty</h2>
+          <p>No new tickets. No follow-ups. Just silence.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h2>No One Changed the Firewall Rules</h2>
+          <p>Feel the harmony of untouched config and unbroken access.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
     </div>
     <h2>Crisis Calming Interventions</h2>
     <div class="card-grid">
       <div class="card">
-        <div class="card-title">No One Changed the Firewall Rules</div>
-        <div class="card-text">Feel the harmony of untouched config and unbroken access.</div>
-        <div class="card-meta"><span>Tags: Firewall, Stability</span><span>Length: 3 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>DNS is Resolving Perfectly</h2>
+          <p>Names become IPs. Fast. Effortless. Divine.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">DNS is Resolving Perfectly</div>
-        <div class="card-text">Names become IPs. Fast. Effortless. Divine.</div>
-        <div class="card-meta"><span>Tags: Networking, Zen</span><span>Length: 2 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Everything Pings</h2>
+          <p>Every server. Every time. Echo replies of peace.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">Everything Pings</div>
-        <div class="card-text">Every server. Every time. Echo replies of peace.</div>
-        <div class="card-meta"><span>Tags: Monitoring, Health</span><span>Length: 2 min</span></div>
-        <button class="play-button">▶ Play</button>
-      </div>
-      <div class="card">
-        <div class="card-title">End User Has Turned It Off and On Again</div>
-        <div class="card-text">Without being asked. Harmony has been achieved.</div>
-        <div class="card-meta"><span>Tags: End Users, Miracles</span><span>Length: 3 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>End User Has Turned It Off and On Again</h2>
+          <p>Without being asked. Harmony has been achieved.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
     </div>
 
     <h2>Vision Boards for Ideal IT States</h2>
     <div class="card-grid">
       <div class="card">
-        <div class="card-title">Zero Meetings, 100% Uptime</div>
-        <div class="card-text">Slack is silent. Zoom is down. But everything just works.</div>
-        <div class="card-meta"><span>Tags: Productivity, Bliss</span><span>Length: 4 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Zero Meetings, 100% Uptime</h2>
+          <p>Slack is silent. Zoom is down. But everything just works.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">Single Pane of Glass</div>
-        <div class="card-text">All systems unified. Nothing missed. The dashboard of dreams.</div>
-        <div class="card-meta"><span>Tags: Monitoring, Clarity</span><span>Length: 3 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Single Pane of Glass</h2>
+          <p>All systems unified. Nothing missed. The dashboard of dreams.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">Users Read the Documentation</div>
-        <div class="card-text">They follow instructions. Troubleshoot themselves. You rest easy.</div>
-        <div class="card-meta"><span>Tags: Education, Empowerment</span><span>Length: 3 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Users Read the Documentation</h2>
+          <p>They follow instructions. Troubleshoot themselves. You rest easy.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
     </div>
 
     <h2>Emergency Grounding Tracks</h2>
     <div class="card-grid">
       <div class="card">
-        <div class="card-title">The Outage is Not Your Fault</div>
-        <div class="card-text">Let go of guilt. Accept the chaos. You didn't break it.</div>
-        <div class="card-meta"><span>Tags: Resilience, Release</span><span>Length: 5 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>The Outage is Not Your Fault</h2>
+          <p>Let go of guilt. Accept the chaos. You didn't break it.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">The CEO Forgot Their Password Again</div>
-        <div class="card-text">It's okay. Reset it. Repeat the cycle. Smile.</div>
-        <div class="card-meta"><span>Tags: Humor, Patience</span><span>Length: 2 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>The CEO Forgot Their Password Again</h2>
+          <p>It's okay. Reset it. Repeat the cycle. Smile.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">VPN Just Works</div>
-        <div class="card-text">Remote users log in. No calls. No complaints. Just peace.</div>
-        <div class="card-meta"><span>Tags: Access, Relief</span><span>Length: 3 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>VPN Just Works</h2>
+          <p>Remote users log in. No calls. No complaints. Just peace.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
     </div>
 
     <h2>Bonus Tracks</h2>
     <div class="card-grid">
       <div class="card">
-        <div class="card-title">Zen and the Art of Server Maintenance</div>
-        <div class="card-text">The fans whisper. The logs are clean. The Zen flows.</div>
-        <div class="card-meta"><span>Tags: Servers, Mindfulness</span><span>Length: 4 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Zen and the Art of Server Maintenance</h2>
+          <p>The fans whisper. The logs are clean. The Zen flows.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">Ctrl + Alt + Delete Your Stress</div>
-        <div class="card-text">Reboot your soul. Force quit your anxiety.</div>
-        <div class="card-meta"><span>Tags: Reset, Balance</span><span>Length: 2 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Ctrl + Alt + Delete Your Stress</h2>
+          <p>Reboot your soul. Force quit your anxiety.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">Esc… Just Esc</div>
-        <div class="card-text">The escape key is a path to enlightenment.</div>
-        <div class="card-meta"><span>Tags: Escape, Peace</span><span>Length: 3 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Esc… Just Esc</h2>
+          <p>The escape key is a path to enlightenment.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">Let That Alert Go</div>
-        <div class="card-text">You've seen the log. You've acknowledged it. Let it float away.</div>
-        <div class="card-meta"><span>Tags: Alerts, Acceptance</span><span>Length: 2 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Let That Alert Go</h2>
+          <p>You've seen the log. You've acknowledged it. Let it float away.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">Ping. Pong. Peace.</div>
-        <div class="card-text">Find rhythm in uptime. Back and forth. Connection eternal.</div>
-        <div class="card-meta"><span>Tags: Connectivity, Flow</span><span>Length: 3 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>Ping. Pong. Peace.</h2>
+          <p>Find rhythm in uptime. Back and forth. Connection eternal.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">SLA Nirvana</div>
-        <div class="card-text">99.999% uptime. Promised. Delivered. Enlightenment guaranteed.</div>
-        <div class="card-meta"><span>Tags: Uptime, Enlightenment</span><span>Length: 4 min</span></div>
-        <button class="play-button">▶ Play</button>
+        <div class="card-content">
+          <h2>SLA Nirvana</h2>
+          <p>99.999% uptime. Promised. Delivered. Enlightenment guaranteed.</p>
+          <button class="play-button">▶ Play</button>
+        </div>
       </div>
     </div>
   </div>

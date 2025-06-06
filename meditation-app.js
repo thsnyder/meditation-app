@@ -16,12 +16,20 @@ class AudioPlayer {
     // Define available tracks
     this.tracks = [
       {
+        title: 'The Printer Is Online',
+        src: 'audio/the-printer-is-online.mp3'
+      },
+      {
         title: 'Patch Tuesday Serenity',
         src: 'audio/patch-tuesday-serenity.mp3'
       },
       {
         title: 'The Ticket Queue is Empty',
         src: 'audio/the-ticket-queue-is-empty.mp3'
+      },
+      {
+        title: 'No One Changed the Firewall Rules',
+        src: 'audio/no-one-changed-the-firewall-rules.mp3'
       }
     ];
     

@@ -71,14 +71,16 @@ const meditationTracks = [
         description: "All systems unified. Nothing missed. The dashboard of dreams.",
         audio: "audio/single-pane.mp3",
         duration: "7:15",
-        tags: ["Vision", "Clarity", "Control"]
+        tags: ["Vision", "Clarity", "Control"],
+        coverArt: "images/single-pane-of-glass.png"
       },
       {
         title: "📚 Users Read the Documentation",
         description: "They follow instructions. Troubleshoot themselves. You rest easy.",
         audio: "audio/users-read-docs.mp3",
         duration: "6:30",
-        tags: ["Vision", "Independence", "Peace"]
+        tags: ["Vision", "Independence", "Peace"],
+        coverArt: "images/users-read-the-documentation.png"
       }
     ]
   },

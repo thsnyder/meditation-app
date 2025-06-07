@@ -32,7 +32,7 @@ const meditationTracks = [
       {
         title: "🌐 DNS is Resolving Perfectly",
         description: "Names become IPs. Fast. Effortless. Divine.",
-        audio: "audio/dns-resolving.mp3",
+        audio: "audio/dns-is-resolving-perfectly.mp3",
         duration: "5:30",
         tags: ["Emergency", "Focus", "Resolution"]
       },

@@ -1,0 +1,26 @@
+{
+  "name": "it-manager-meditation-app",
+  "version": "1.0.0",
+  "description": "A meditation application designed specifically for IT managers, helping them find peace in the chaos of technology management.",
+  "main": "meditation-app.js",
+  "scripts": {
+    "dev:css": "tailwindcss -i ./styles.css -o ./dist/output.css --watch",
+    "dev:server": "serve",
+    "dev": "concurrently \"npm run dev:css\" \"npm run dev:server\"",
+    "build": "tailwindcss -i ./styles.css -o ./dist/output.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@chakra-ui/react": "latest",
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "autoprefixer": "latest",
+    "concurrently": "^9.1.2",
+    "framer-motion": "latest",
+    "postcss": "latest",
+    "serve": "latest",
+    "tailwindcss": "latest"
+  }
+}

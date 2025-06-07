@@ -1,146 +1,356 @@
-class AudioPlayer {
-  constructor() {
-    this.audio = new Audio();
-    this.player = document.querySelector('.audio-player');
-    this.playPauseBtn = document.querySelector('.play-pause');
-    this.prevBtn = document.querySelector('.prev');
-    this.nextBtn = document.querySelector('.next');
-    this.progressBar = document.querySelector('.progress-bar');
-    this.progress = document.querySelector('.progress');
-    this.currentTime = document.querySelector('.current-time');
-    this.duration = document.querySelector('.duration');
-    this.currentTitle = document.querySelector('.current-title');
-    this.isPlaying = false;
-    this.currentTrackIndex = -1;
-    
-    // Define available tracks
-    this.tracks = [
+// Meditation tracks data
+const meditationTracks = [
+  {
+    category: "Daily De-Stress Sessions",
+    tracks: [
       {
-        title: 'The Printer Is Online',
-        src: 'audio/the-printer-is-online.mp3'
+        title: "🔄 Patch Tuesday Serenity",
+        description: "Updates install flawlessly. Users restart without complaint. Bliss.",
+        audio: "audio/patch-tuesday-serenity.mp3",
+        duration: "7:30",
+        tags: ["Release", "Peace", "Acceptance"]
       },
       {
-        title: 'Patch Tuesday Serenity',
-        src: 'audio/patch-tuesday-serenity.mp3'
+        title: "📭 The Ticket Queue is Empty",
+        description: "No new tickets. No follow-ups. Just silence.",
+        audio: "audio/the-ticket-queue-is-empty.mp3",
+        duration: "4:45",
+        tags: ["Relief", "Calm", "Gratitude"]
       },
       {
-        title: 'The Ticket Queue is Empty',
-        src: 'audio/the-ticket-queue-is-empty.mp3'
-      },
-      {
-        title: 'No One Changed the Firewall Rules',
-        src: 'audio/no-one-changed-the-firewall-rules.mp3'
+        title: "🛡️ No One Changed the Firewall Rules",
+        description: "Feel the harmony of untouched config and unbroken access.",
+        audio: "audio/no-one-changed-the-firewall-rules.mp3",
+        duration: "6:15",
+        tags: ["Security", "Peace", "Stability"]
       }
-    ];
+    ]
+  },
+  {
+    category: "Crisis Calming Interventions",
+    tracks: [
+      {
+        title: "🌐 DNS is Resolving Perfectly",
+        description: "Names become IPs. Fast. Effortless. Divine.",
+        audio: "audio/dns-resolving.mp3",
+        duration: "5:30",
+        tags: ["Emergency", "Focus", "Resolution"]
+      },
+      {
+        title: "📡 Everything Pings",
+        description: "Every server. Every time. Echo replies of peace.",
+        audio: "audio/everything-pings.mp3",
+        duration: "4:15",
+        tags: ["Network", "Relief", "Stability"]
+      },
+      {
+        title: "🔄 End User Has Turned It Off and On Again",
+        description: "Without being asked. Harmony has been achieved.",
+        audio: "audio/restart.mp3",
+        duration: "3:45",
+        tags: ["Quick Fix", "Relief", "Gratitude"]
+      }
+    ]
+  },
+  {
+    category: "Vision Boards for Ideal IT States",
+    tracks: [
+      {
+        title: "📊 Zero Meetings, 100% Uptime",
+        description: "Slack is silent. Zoom is down. But everything just works.",
+        audio: "audio/zero-meetings.mp3",
+        duration: "8:00",
+        tags: ["Vision", "Peace", "Productivity"]
+      },
+      {
+        title: "🖥️ Single Pane of Glass",
+        description: "All systems unified. Nothing missed. The dashboard of dreams.",
+        audio: "audio/single-pane.mp3",
+        duration: "7:15",
+        tags: ["Vision", "Clarity", "Control"]
+      },
+      {
+        title: "📚 Users Read the Documentation",
+        description: "They follow instructions. Troubleshoot themselves. You rest easy.",
+        audio: "audio/users-read-docs.mp3",
+        duration: "6:30",
+        tags: ["Vision", "Independence", "Peace"]
+      }
+    ]
+  },
+  {
+    category: "Emergency Grounding Tracks",
+    tracks: [
+      {
+        title: "🧘 The Outage is Not Your Fault",
+        description: "Let go of guilt. Accept the chaos. You didn't break it.",
+        audio: "audio/not-your-fault.mp3",
+        duration: "5:45",
+        tags: ["Emergency", "Acceptance", "Release"]
+      },
+      {
+        title: "👑 The CEO Forgot Their Password Again",
+        description: "It's okay. Reset it. Repeat the cycle. Smile.",
+        audio: "audio/ceo-password.mp3",
+        duration: "4:30",
+        tags: ["Emergency", "Patience", "Humor"]
+      },
+      {
+        title: "🔒 VPN Just Works",
+        description: "Remote users log in. No calls. No complaints. Just peace.",
+        audio: "audio/vpn-works.mp3",
+        duration: "5:15",
+        tags: ["Emergency", "Relief", "Stability"]
+      }
+    ]
+  },
+  {
+    category: "Bonus Tracks",
+    tracks: [
+      {
+        title: "🖥️ Zen and the Art of Server Maintenance",
+        description: "The fans whisper. The logs are clean. The Zen flows.",
+        audio: "audio/server-maintenance.mp3",
+        duration: "8:30",
+        tags: ["Maintenance", "Peace", "Flow"]
+      },
+      {
+        title: "⌨️ Ctrl + Alt + Delete Your Stress",
+        description: "Reboot your soul. Force quit your anxiety.",
+        audio: "audio/ctrl-alt-delete.mp3",
+        duration: "6:45",
+        tags: ["Quick Fix", "Release", "Reset"]
+      },
+      {
+        title: "🔑 Esc… Just Esc",
+        description: "The escape key is a path to enlightenment.",
+        audio: "audio/just-esc.mp3",
+        duration: "4:00",
+        tags: ["Quick Fix", "Release", "Simplicity"]
+      },
+      {
+        title: "🔔 Let That Alert Go",
+        description: "You've seen the log. You've acknowledged it. Let it float away.",
+        audio: "audio/let-alert-go.mp3",
+        duration: "5:15",
+        tags: ["Release", "Acceptance", "Peace"]
+      },
+      {
+        title: "📶 Ping. Pong. Peace.",
+        description: "Find rhythm in uptime. Back and forth. Connection eternal.",
+        audio: "audio/ping-pong.mp3",
+        duration: "4:45",
+        tags: ["Rhythm", "Connection", "Flow"]
+      },
+      {
+        title: "📈 SLA Nirvana",
+        description: "99.999% uptime. Promised. Delivered. Enlightenment guaranteed.",
+        audio: "audio/sla-nirvana.mp3",
+        duration: "7:00",
+        tags: ["Achievement", "Success", "Peace"]
+      }
+    ]
+  }
+];
+
+// Initialize the audio player
+let currentTrack = 0;
+let currentCategory = 0;
+let isPlaying = false;
+let audio = new Audio();
+
+// Create cards for each category
+function createCards() {
+  const container = document.querySelector('.container');
+  
+  meditationTracks.forEach((category, categoryIndex) => {
+    const section = document.createElement('div');
+    section.className = 'mb-16';
     
-    this.setupEventListeners();
-  }
-
-  setupEventListeners() {
-    this.playPauseBtn.addEventListener('click', () => this.togglePlay());
-    this.prevBtn.addEventListener('click', () => this.playPrevious());
-    this.nextBtn.addEventListener('click', () => this.playNext());
-    this.progress.addEventListener('click', (e) => this.seek(e));
+    const heading = document.createElement('h2');
+    heading.className = 'text-4xl font-bold text-primary mb-12 pb-4 border-b-4 border-primary inline-block';
+    heading.textContent = category.category;
     
-    this.audio.addEventListener('timeupdate', () => this.updateProgress());
-    this.audio.addEventListener('loadedmetadata', () => this.updateDuration());
-    this.audio.addEventListener('ended', () => this.onEnded());
-  }
-
-  loadTrack(track) {
-    // Stop current playback if any
-    if (this.isPlaying) {
-      this.audio.pause();
-      this.isPlaying = false;
-    }
-
-    this.audio.src = track.src;
-    this.currentTitle.textContent = track.title;
-    this.player.classList.add('visible');
-    this.playPauseBtn.textContent = '▶';
-    this.audio.load();
+    const grid = document.createElement('div');
+    grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8';
     
-    // Update current track index
-    this.currentTrackIndex = this.tracks.findIndex(t => t.src === track.src);
-  }
+    category.tracks.forEach((track, trackIndex) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      
+      // Check if audio file exists
+      const tempAudio = new Audio(track.audio);
+      let isAudioAvailable = false;
+      
+      tempAudio.addEventListener('loadedmetadata', () => {
+        const durationSpan = card.querySelector('.duration-display');
+        if (durationSpan) {
+          durationSpan.textContent = formatTime(tempAudio.duration);
+        }
+        isAudioAvailable = true;
+        updatePlayButton(card, isAudioAvailable);
+      });
+      
+      tempAudio.addEventListener('error', () => {
+        isAudioAvailable = false;
+        updatePlayButton(card, isAudioAvailable);
+      });
+      
+      card.innerHTML = `
+        <div class="card-content flex flex-col h-full">
+          <div class="flex-grow">
+            <h2 class="text-2xl font-bold text-primary mb-4">${track.title}</h2>
+            <p class="text-gray-700 mb-4">${track.description}</p>
+            <div class="flex items-center mb-4">
+              <span class="text-sm text-gray-500">
+                <i class="fas fa-clock mr-1"></i><span class="duration-display">Loading...</span>
+              </span>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              ${track.tags.map(tag => `
+                <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">${tag}</span>
+              `).join('')}
+            </div>
+          </div>
+          <div class="mt-auto">
+            <button class="play-button w-full" data-category="${categoryIndex}" data-track="${trackIndex}">
+              <i class="fas fa-play mr-2"></i>Play
+            </button>
+          </div>
+        </div>
+      `;
+      
+      grid.appendChild(card);
+    });
+    
+    section.appendChild(heading);
+    section.appendChild(grid);
+    container.appendChild(section);
+  });
+}
 
-  togglePlay() {
-    if (this.audio.paused) {
-      this.audio.play();
-      this.playPauseBtn.textContent = '⏸';
-      this.isPlaying = true;
-    } else {
-      this.audio.pause();
-      this.playPauseBtn.textContent = '▶';
-      this.isPlaying = false;
-    }
-  }
-
-  updateProgress() {
-    const percent = (this.audio.currentTime / this.audio.duration) * 100;
-    this.progressBar.style.width = `${percent}%`;
-    this.currentTime.textContent = this.formatTime(this.audio.currentTime);
-  }
-
-  updateDuration() {
-    this.duration.textContent = this.formatTime(this.audio.duration);
-  }
-
-  formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    seconds = Math.floor(seconds % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  }
-
-  seek(e) {
-    const percent = e.offsetX / this.progress.offsetWidth;
-    this.audio.currentTime = percent * this.audio.duration;
-  }
-
-  onEnded() {
-    this.playPauseBtn.textContent = '▶';
-    this.progressBar.style.width = '0%';
-    this.isPlaying = false;
-    this.playNext(); // Auto-play next track when current one ends
-  }
-
-  playPrevious() {
-    if (this.currentTrackIndex > 0) {
-      this.currentTrackIndex--;
-      this.loadTrack(this.tracks[this.currentTrackIndex]);
-      this.togglePlay();
-    }
-  }
-
-  playNext() {
-    if (this.currentTrackIndex < this.tracks.length - 1) {
-      this.currentTrackIndex++;
-      this.loadTrack(this.tracks[this.currentTrackIndex]);
-      this.togglePlay();
-    }
+// Update play button state based on audio availability
+function updatePlayButton(card, isAvailable) {
+  const button = card.querySelector('.play-button');
+  if (!button) return;
+  
+  if (isAvailable) {
+    button.classList.remove('opacity-50', 'cursor-not-allowed');
+    button.classList.add('cursor-pointer');
+    button.innerHTML = '<i class="fas fa-play mr-2"></i>Play';
+    button.disabled = false;
+  } else {
+    button.classList.add('opacity-50', 'cursor-not-allowed');
+    button.classList.remove('cursor-pointer');
+    button.innerHTML = '<i class="fas fa-clock mr-2"></i>Coming Soon';
+    button.disabled = true;
   }
 }
 
-// Initialize audio player
-const player = new AudioPlayer();
-
-// Add click handlers to all play buttons
-document.querySelectorAll('.play-button').forEach(button => {
-  button.addEventListener('click', (e) => {
-    const card = e.target.closest('.card');
-    const title = card.querySelector('.card-title').textContent;
-    
-    // Find the matching track
-    const track = player.tracks.find(t => t.title === title);
-    if (track) {
-      player.loadTrack(track);
-      player.togglePlay();
-      
-      // Update button state
-      document.querySelectorAll('.play-button').forEach(btn => {
-        btn.classList.remove('playing');
-      });
-      button.classList.add('playing');
+// Initialize the audio player UI
+function initAudioPlayer() {
+  const audioPlayer = document.querySelector('.audio-player');
+  const playPauseBtn = document.querySelector('.play-pause');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+  const progressBar = document.querySelector('.progress-bar');
+  const currentTimeSpan = document.querySelector('.current-time');
+  const durationSpan = document.querySelector('.duration');
+  const currentTitleSpan = document.querySelector('.current-title');
+  
+  // Update progress bar
+  audio.addEventListener('timeupdate', () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = `${progress}%`;
+    currentTimeSpan.textContent = formatTime(audio.currentTime);
+  });
+  
+  // Update duration
+  audio.addEventListener('loadedmetadata', () => {
+    durationSpan.textContent = formatTime(audio.duration);
+  });
+  
+  // Play/Pause button
+  playPauseBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      audio.pause();
+      playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    } else {
+      audio.play();
+      playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
     }
+    isPlaying = !isPlaying;
+  });
+  
+  // Previous button
+  prevBtn.addEventListener('click', () => {
+    currentTrack = (currentTrack - 1 + meditationTracks[currentCategory].tracks.length) % meditationTracks[currentCategory].tracks.length;
+    playTrack(currentCategory, currentTrack);
+  });
+  
+  // Next button
+  nextBtn.addEventListener('click', () => {
+    currentTrack = (currentTrack + 1) % meditationTracks[currentCategory].tracks.length;
+    playTrack(currentCategory, currentTrack);
+  });
+  
+  // Progress bar click
+  document.querySelector('.progress').addEventListener('click', (e) => {
+    const rect = e.target.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pos * audio.duration;
+  });
+
+  // Handle audio end
+  audio.addEventListener('ended', () => {
+    isPlaying = false;
+    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+  });
+}
+
+// Play a specific track
+function playTrack(categoryIndex, trackIndex) {
+  const track = meditationTracks[categoryIndex].tracks[trackIndex];
+  currentCategory = categoryIndex;
+  currentTrack = trackIndex;
+  
+  // Check if audio is available before playing
+  const tempAudio = new Audio(track.audio);
+  tempAudio.addEventListener('error', () => {
+    console.error('Audio file not available:', track.audio);
+    return;
+  });
+  
+  audio.src = track.audio;
+  audio.play().catch(error => {
+    console.error('Error playing audio:', error);
+  });
+  isPlaying = true;
+  
+  document.querySelector('.current-title').textContent = track.title;
+  document.querySelector('.play-pause').innerHTML = '<i class="fas fa-pause"></i>';
+  document.querySelector('.audio-player').classList.remove('hidden');
+}
+
+// Format time in MM:SS
+function formatTime(seconds) {
+  if (isNaN(seconds)) return '0:00';
+  const minutes = Math.floor(seconds / 60);
+  seconds = Math.floor(seconds % 60);
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+// Initialize the app
+document.addEventListener('DOMContentLoaded', () => {
+  createCards();
+  initAudioPlayer();
+  
+  // Add click handlers for play buttons
+  document.querySelectorAll('.play-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const categoryIndex = parseInt(button.dataset.category);
+      const trackIndex = parseInt(button.dataset.track);
+      playTrack(categoryIndex, trackIndex);
+    });
   });
 }); 

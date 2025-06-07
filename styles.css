@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer components {
+  .card {
+    @apply bg-white rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 relative overflow-hidden;
+  }
+  
+  .card::before {
+    @apply content-[''] absolute inset-0 rounded-3xl p-[2px] bg-gradient-to-r from-primary to-primary-light opacity-70 transition-opacity duration-300;
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  .card:hover::before {
+    @apply opacity-100;
+  }
+  
+  .benefit-card {
+    @apply bg-white rounded-2xl p-6 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-2 text-center cursor-pointer;
+  }
+  
+  .play-button {
+    @apply bg-primary text-white px-6 py-3 rounded-full font-bold transition-all duration-300 hover:bg-primary-light hover:scale-105;
+  }
+  
+  .card:hover .play-button {
+    @apply bg-primary-light;
+  }
+} 

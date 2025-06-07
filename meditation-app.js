@@ -8,21 +8,24 @@ const meditationTracks = [
         description: "Updates install flawlessly. Users restart without complaint. Bliss.",
         audio: "audio/patch-tuesday-serenity.mp3",
         duration: "7:30",
-        tags: ["Release", "Peace", "Acceptance"]
+        tags: ["Release", "Peace", "Acceptance"],
+        coverArt: "images/patch-tuesday-serenity.png"
       },
       {
         title: "📭 The Ticket Queue is Empty",
         description: "No new tickets. No follow-ups. Just silence.",
         audio: "audio/the-ticket-queue-is-empty.mp3",
         duration: "4:45",
-        tags: ["Relief", "Calm", "Gratitude"]
+        tags: ["Relief", "Calm", "Gratitude"],
+        coverArt: "images/the-ticket-queue-is-empty.png"
       },
       {
         title: "🛡️ No One Changed the Firewall Rules",
         description: "Feel the harmony of untouched config and unbroken access.",
         audio: "audio/no-one-changed-the-firewall-rules.mp3",
         duration: "6:15",
-        tags: ["Security", "Peace", "Stability"]
+        tags: ["Security", "Peace", "Stability"],
+        coverArt: "images/no-one-changed-the-firewall-rules.png"
       }
     ]
   },
@@ -207,14 +210,12 @@ function createCards() {
             ` : ''}
             <h2 class="text-2xl font-bold text-primary mb-4">${track.title}</h2>
             <p class="text-gray-700 mb-4">${track.description}</p>
-            <div class="flex items-center mb-4">
-              <span class="text-sm text-gray-500">
-                <i class="fas fa-clock mr-1"></i><span class="duration-display">Loading...</span>
+            <div class="flex items-center gap-2 mb-6 flex-wrap">
+              <span class="duration-display flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-1"></i><span>Loading...</span>
               </span>
-            </div>
-            <div class="flex flex-wrap gap-2 mb-6">
               ${track.tags.map(tag => `
-                <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">${tag}</span>
+                <span class="tag">${tag}</span>
               `).join('')}
             </div>
           </div>

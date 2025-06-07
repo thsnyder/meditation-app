@@ -3,74 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calmmand Line | IT Manager Meditation App</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="./dist/output.css" rel="stylesheet">
+  <title>IT Manager Meditation App</title>
+  <link rel="stylesheet" href="dist/output.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://unpkg.com/@chakra-ui/react@latest/dist/index.umd.js"></script>
 </head>
-<body class="bg-gray-50">
-  <header class="bg-gradient-to-r from-primary to-primary-light text-white py-24 px-4 text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"2\" cy=\"2\" r=\"1\" fill=\"rgba(255,255,255,0.1)\"/></svg>');"></div>
-    <h1 class="text-5xl font-bold mb-4">🧘‍♂️ Calmmand Line</h1>
-    <p class="text-xl opacity-90">The world's first meditation app for IT managers.</p>
-  </header>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">🧘‍♂️Calmmand Line</h1>
+      <p class="subtitle">The world's first Meditation App for IT Managers.<br>Find your inner peace in the chaos of IT management. Breathe in, breathe out, and remember: the server is always listening.</p>
+    </header>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 py-16">
-    <div class="benefit-card cursor-pointer" onclick="document.querySelector('.container').scrollIntoView({ behavior: 'smooth' })">
-      <div class="text-4xl mb-6 text-primary">🧘‍♂️</div>
-      <h3 class="text-xl font-semibold text-primary mb-4">Zen Mode: Activated</h3>
-      <p class="text-gray-700">When the server room is on fire and your coffee is cold, find your inner peace. Because screaming into the void is so 2023.</p>
-    </div>
-    <div class="benefit-card cursor-pointer" onclick="document.querySelector('.container').scrollIntoView({ behavior: 'smooth' })">
-      <div class="text-4xl mb-6 text-primary">⚡️</div>
-      <h3 class="text-xl font-semibold text-primary mb-4">Laser Focus</h3>
-      <p class="text-gray-700">Debug like a ninja, deploy like a boss. Your attention span will be longer than your last system uptime.</p>
-    </div>
-    <div class="benefit-card cursor-pointer" onclick="document.querySelector('.container').scrollIntoView({ behavior: 'smooth' })">
-      <div class="text-4xl mb-6 text-primary">🤝</div>
-      <h3 class="text-xl font-semibold text-primary mb-4">Patience Level: IT Manager</h3>
-      <p class="text-gray-700">Handle "I forgot my password" for the 1000th time without losing your cool. Your zen will be stronger than your firewall.</p>
-    </div>
+    <main>
+      <!-- Cards will be dynamically inserted here -->
+    </main>
   </div>
 
-  <div class="container max-w-7xl mx-auto px-4 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Cards will be dynamically generated here -->
-    </div>
-  </div>
+  <footer class="text-center py-12 text-gray-600 border-t border-gray-200">
+    Made with <span class="text-red-500">❤️</span> & <span class="text-yellow-600">☕️</span> by 
+    <a href="https://github.com/thsnyder" class="text-primary hover:text-primary/80 transition-colors">Tom Snyder</a> 
+    at <a href="https://files.com" class="text-primary hover:text-primary/80 transition-colors">Files.com</a>
+  </footer>
 
-  <div class="audio-player fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 hidden">
-    <div class="container mx-auto">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-6">
-          <button class="prev text-primary hover:text-primary-light transition-colors text-xl">
-            <i class="fas fa-backward-step"></i>
-          </button>
-          <button class="play-pause text-primary hover:text-primary-light transition-colors text-2xl">
-            <i class="fas fa-play"></i>
-          </button>
-          <button class="next text-primary hover:text-primary-light transition-colors text-xl">
-            <i class="fas fa-forward-step"></i>
-          </button>
+  <!-- Audio Player -->
+  <div class="audio-player hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="progress-container">
+        <div class="flex items-center justify-between mb-2">
+          <span class="time-display current-time">0:00</span>
+          <span class="current-title"></span>
+          <span class="time-display duration">0:00</span>
         </div>
-        <div class="flex-1 mx-6">
-          <div class="text-sm font-medium text-gray-700 mb-2 current-title"></div>
-          <div class="relative h-2 bg-gray-200 rounded-full progress cursor-pointer">
-            <div class="absolute top-0 left-0 h-full bg-primary rounded-full progress-bar" style="width: 0%"></div>
-          </div>
-        </div>
-        <div class="text-sm text-gray-500 font-medium">
-          <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 0%"></div>
         </div>
       </div>
+      <div class="audio-controls">
+        <button class="control-button prev" title="Previous Track">
+          <i class="fas fa-backward-step text-xl"></i>
+        </button>
+        <button class="control-button play-pause" title="Play/Pause">
+          <i class="fas fa-play text-2xl"></i>
+        </button>
+        <button class="control-button next" title="Next Track">
+          <i class="fas fa-forward-step text-xl"></i>
+        </button>
+      </div>
     </div>
-  </div>
-
-  <div class="text-center py-8 text-gray-600">
-    Made with ❤️ & ☕️ by <a href="https://github.com/thsnyder" class="text-primary hover:text-primary-light">Tom Snyder</a> at <a href="https://files.com" class="text-primary hover:text-primary-light">Files.com</a>
   </div>
 
   <script src="meditation-app.js"></script>

@@ -58,9 +58,10 @@ const meditationTracks = [
       {
         title: "📊 Zero Meetings, 100% Uptime",
         description: "Slack is silent. Zoom is down. But everything just works.",
-        audio: "audio/zero-meetings.mp3",
+        audio: "audio/zero-meetings-100-uptime.mp3",
         duration: "8:00",
-        tags: ["Vision", "Peace", "Productivity"]
+        tags: ["Vision", "Peace", "Productivity"],
+        coverArt: "images/zero-meetings-100-uptime.png"
       },
       {
         title: "🖥️ Single Pane of Glass",
@@ -199,6 +200,11 @@ function createCards() {
       card.innerHTML = `
         <div class="card-content flex flex-col h-full">
           <div class="flex-grow">
+            ${track.coverArt ? `
+              <div class="mb-4 rounded-lg overflow-hidden">
+                <img src="${track.coverArt}" alt="${track.title}" class="w-full h-48 object-cover">
+              </div>
+            ` : ''}
             <h2 class="text-2xl font-bold text-primary mb-4">${track.title}</h2>
             <p class="text-gray-700 mb-4">${track.description}</p>
             <div class="flex items-center mb-4">
@@ -272,14 +278,11 @@ function initAudioPlayer() {
   
   // Play/Pause button
   playPauseBtn.addEventListener('click', () => {
-    if (isPlaying) {
-      audio.pause();
-      playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-    } else {
+    if (audio.paused) {
       audio.play();
-      playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+      audio.pause();
     }
-    isPlaying = !isPlaying;
   });
   
   // Previous button
@@ -301,35 +304,60 @@ function initAudioPlayer() {
     audio.currentTime = pos * audio.duration;
   });
 
-  // Handle audio end
+  // Handle audio state changes
+  audio.addEventListener('play', () => {
+    const playButton = playPauseBtn.querySelector('i');
+    playButton.classList.remove('fa-play');
+    playButton.classList.add('fa-pause');
+  });
+
+  audio.addEventListener('pause', () => {
+    const playButton = playPauseBtn.querySelector('i');
+    playButton.classList.remove('fa-pause');
+    playButton.classList.add('fa-play');
+  });
+
   audio.addEventListener('ended', () => {
-    isPlaying = false;
-    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    const playButton = playPauseBtn.querySelector('i');
+    playButton.classList.remove('fa-pause');
+    playButton.classList.add('fa-play');
+    audioPlayer.classList.add('hidden');
+    audioPlayer.classList.remove('visible');
   });
 }
 
 // Play a specific track
 function playTrack(categoryIndex, trackIndex) {
   const track = meditationTracks[categoryIndex].tracks[trackIndex];
-  currentCategory = categoryIndex;
-  currentTrack = trackIndex;
-  
-  // Check if audio is available before playing
-  const tempAudio = new Audio(track.audio);
-  tempAudio.addEventListener('error', () => {
-    console.error('Audio file not available:', track.audio);
+  if (!track.audio) {
+    console.log('No audio available for this track');
     return;
-  });
-  
+  }
+
+  currentTrack = trackIndex;
+  currentCategory = categoryIndex;
   audio.src = track.audio;
+  
+  // Show the audio player
+  const audioPlayer = document.querySelector('.audio-player');
+  audioPlayer.classList.remove('hidden');
+  audioPlayer.classList.add('visible');
+  
+  // Update the current title
+  document.querySelector('.current-title').textContent = track.title;
+  
+  // Reset the progress bar
+  document.querySelector('.progress-bar').style.width = '0%';
+  document.querySelector('.current-time').textContent = '0:00';
+  document.querySelector('.duration').textContent = '0:00';
+  
+  // Play the audio
   audio.play().catch(error => {
     console.error('Error playing audio:', error);
+    // If there's an error, hide the audio player
+    audioPlayer.classList.add('hidden');
+    audioPlayer.classList.remove('visible');
   });
-  isPlaying = true;
-  
-  document.querySelector('.current-title').textContent = track.title;
-  document.querySelector('.play-pause').innerHTML = '<i class="fas fa-pause"></i>';
-  document.querySelector('.audio-player').classList.remove('hidden');
 }
 
 // Format time in MM:SS

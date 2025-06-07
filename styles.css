@@ -2,35 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles */
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen;
+  }
+}
+
 @layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12;
+  }
+
+  .header {
+    @apply text-center mb-16 relative;
+  }
+
+  .header::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-primary/20 rounded-full;
+  }
+
+  .title {
+    @apply text-5xl md:text-6xl font-bold text-gray-900 mb-6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .subtitle {
+    @apply text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed;
+  }
+
+  .category-heading {
+    @apply text-4xl font-bold text-primary mb-12 pb-4 border-b-4 border-primary/20 inline-block relative;
+  }
+
+  .category-heading::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-primary/10 rounded-full;
+  }
+
   .card {
-    @apply bg-white rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 relative overflow-hidden;
+    @apply bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl relative overflow-hidden;
   }
-  
+
   .card::before {
-    @apply content-[''] absolute inset-0 rounded-3xl p-[2px] bg-gradient-to-r from-primary to-primary-light opacity-70 transition-opacity duration-300;
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300;
   }
-  
+
   .card:hover::before {
     @apply opacity-100;
   }
-  
+
+  .card-content {
+    @apply relative z-10;
+  }
+
+  .card h2 {
+    @apply text-2xl font-bold text-primary mb-4;
+  }
+
+  .card p {
+    @apply text-gray-600 mb-4 leading-relaxed;
+  }
+
+  .play-button {
+    @apply bg-primary text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 
+           hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98] 
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
+           flex items-center justify-center gap-2;
+  }
+
+  .audio-player {
+    @apply fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 
+           shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] transition-all duration-300 transform translate-y-full z-50
+           py-4;
+  }
+
+  .audio-player.visible {
+    @apply translate-y-0;
+  }
+
+  .audio-controls {
+    @apply flex items-center justify-center gap-8 py-4;
+  }
+
+  .control-button {
+    @apply text-gray-600 hover:text-primary transition-all duration-200 
+           disabled:opacity-50 disabled:cursor-not-allowed
+           p-3 rounded-full hover:bg-gray-100 active:bg-gray-200
+           transform hover:scale-110 active:scale-95;
+  }
+
+  .progress-container {
+    @apply w-full max-w-2xl mx-auto px-6;
+  }
+
+  .progress {
+    @apply h-2 bg-gray-200 rounded-full overflow-hidden cursor-pointer
+           hover:h-3 transition-all duration-200;
+  }
+
+  .progress-bar {
+    @apply h-full bg-primary transition-all duration-200
+           relative after:content-[''] after:absolute after:right-0 after:top-1/2 
+           after:-translate-y-1/2 after:w-3 after:h-3 after:bg-primary 
+           after:rounded-full after:opacity-0 hover:after:opacity-100
+           after:transition-opacity after:duration-200;
+  }
+
+  .time-display {
+    @apply text-sm text-gray-500 font-medium;
+  }
+
+  .current-title {
+    @apply text-lg font-semibold text-gray-900 truncate text-center
+           bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent;
+  }
+
+  .tag {
+    @apply text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full font-medium
+           transition-all duration-200 hover:bg-primary/20;
+  }
+
+  .duration-display {
+    @apply text-sm text-gray-500 font-medium flex items-center gap-1;
+  }
+
+  .duration-display i {
+    @apply text-primary/70;
+  }
+
   .benefit-card {
     @apply bg-white rounded-2xl p-6 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-2 text-center cursor-pointer;
   }
-  
-  .play-button {
-    @apply bg-primary text-white px-6 py-3 rounded-full font-bold transition-all duration-300 hover:bg-primary-light hover:scale-105;
+
+  footer {
+    @apply bg-white;
   }
-  
-  .card:hover .play-button {
-    @apply bg-primary-light;
+
+  footer a {
+    @apply font-medium hover:underline;
   }
 } 

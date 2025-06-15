@@ -69,7 +69,7 @@ const meditationTracks = [
       {
         title: "🖥️ Single Pane of Glass",
         description: "All systems unified. Nothing missed. The dashboard of dreams.",
-        audio: "audio/single-pane.mp3",
+        audio: "audio/single-pane-of-glass.mp3",
         duration: "7:15",
         tags: ["Vision", "Clarity", "Control"],
         coverArt: "images/single-pane-of-glass.png"
@@ -77,10 +77,31 @@ const meditationTracks = [
       {
         title: "📚 Users Read the Documentation",
         description: "They follow instructions. Troubleshoot themselves. You rest easy.",
-        audio: "audio/users-read-docs.mp3",
+        audio: "audio/users-read-the-documentation.mp3",
         duration: "6:30",
         tags: ["Vision", "Independence", "Peace"],
         coverArt: "images/users-read-the-documentation.png"
+      },
+      {
+        title: "🔄 End User Has Turned It Off and On Again",
+        description: "The classic solution works. The ticket closes itself. Bliss.",
+        audio: "audio/end-user-has-turned-it-off-and-on-again.mp3",
+        duration: "5:45",
+        tags: ["Relief", "Simplicity", "Gratitude"]
+      },
+      {
+        title: "🌐 Everything Pings",
+        description: "All systems respond. No timeouts. Just harmony.",
+        audio: "audio/everything-pings.mp3",
+        duration: "6:00",
+        tags: ["Stability", "Peace", "Control"]
+      },
+      {
+        title: "🔍 DNS is Resolving Perfectly",
+        description: "No more 'cannot resolve hostname'. Just smooth sailing.",
+        audio: "audio/dns-is-resolving-perfectly.mp3",
+        duration: "5:30",
+        tags: ["Relief", "Clarity", "Gratitude"]
       }
     ]
   },

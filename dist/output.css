@@ -1134,12 +1134,12 @@ footer a:hover {
   height: 0.5rem;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .h-48 {
   height: 12rem;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-32 {
@@ -1234,12 +1234,12 @@ footer a:hover {
   border-radius: 9999px;
 }
 
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .border-b-4 {
@@ -1347,11 +1347,6 @@ footer a:hover {
   padding: 1.5rem;
 }
 
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -1365,11 +1360,6 @@ footer a:hover {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }
 
 .py-1\.5 {

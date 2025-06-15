@@ -1,73 +1,161 @@
 // Meditation tracks data
 const meditationTracks = [
   {
-    title: "🔄 Patch Tuesday Serenity",
-    description: "Updates install flawlessly. Users restart without complaint. Bliss.",
-    audio: "audio/patch-tuesday-serenity.mp3",
-    duration: "7:30",
-    tags: ["Release", "Peace", "Acceptance"],
-    coverArt: "images/patch-tuesday-serenity.png"
+    category: "Daily De-Stress Sessions",
+    tracks: [
+      {
+        title: "🔄 Patch Tuesday Serenity",
+        description: "Updates install flawlessly. Users restart without complaint. Bliss.",
+        audio: "audio/patch-tuesday-serenity.mp3",
+        duration: "7:30",
+        tags: ["Release", "Peace", "Acceptance"],
+        coverArt: "images/patch-tuesday-serenity.png"
+      },
+      {
+        title: "📭 The Ticket Queue is Empty",
+        description: "No new tickets. No follow-ups. Just silence.",
+        audio: "audio/the-ticket-queue-is-empty.mp3",
+        duration: "4:45",
+        tags: ["Relief", "Calm", "Gratitude"],
+        coverArt: "images/the-ticket-queue-is-empty.png"
+      },
+      {
+        title: "🛡️ No One Changed the Firewall Rules",
+        description: "Feel the harmony of untouched config and unbroken access.",
+        audio: "audio/no-one-changed-the-firewall-rules.mp3",
+        duration: "6:15",
+        tags: ["Security", "Peace", "Stability"],
+        coverArt: "images/no-one-changed-the-firewall-rules.png"
+      }
+    ]
   },
   {
-    title: "📭 The Ticket Queue is Empty",
-    description: "No new tickets. No follow-ups. Just silence.",
-    audio: "audio/the-ticket-queue-is-empty.mp3",
-    duration: "4:45",
-    tags: ["Relief", "Calm", "Gratitude"],
-    coverArt: "images/the-ticket-queue-is-empty.png"
+    category: "Crisis Calming Interventions",
+    tracks: [
+      {
+        title: "🌐 DNS is Resolving Perfectly",
+        description: "Names become IPs. Fast. Effortless. Divine.",
+        audio: "audio/dns-is-resolving-perfectly.mp3",
+        duration: "5:30",
+        tags: ["Emergency", "Focus", "Resolution"]
+      },
+      {
+        title: "📡 Everything Pings",
+        description: "Every server. Every time. Echo replies of peace.",
+        audio: "audio/everything-pings.mp3",
+        duration: "4:15",
+        tags: ["Network", "Relief", "Stability"]
+      },
+      {
+        title: "🔄 End User Has Turned It Off and On Again",
+        description: "Without being asked. Harmony has been achieved.",
+        audio: "audio/end-user-has-turned-it-off-and-on-again.mp3",
+        duration: "3:45",
+        tags: ["Quick Fix", "Relief", "Gratitude"]
+      }
+    ]
   },
   {
-    title: "🛡️ No One Changed the Firewall Rules",
-    description: "Feel the harmony of untouched config and unbroken access.",
-    audio: "audio/no-one-changed-the-firewall-rules.mp3",
-    duration: "6:15",
-    tags: ["Security", "Peace", "Stability"],
-    coverArt: "images/no-one-changed-the-firewall-rules.png"
+    category: "Vision Boards for Ideal IT States",
+    tracks: [
+      {
+        title: "📊 Zero Meetings, 100% Uptime",
+        description: "Slack is silent. Zoom is down. But everything just works.",
+        audio: "audio/zero-meetings-100-uptime.mp3",
+        duration: "8:00",
+        tags: ["Vision", "Peace", "Productivity"],
+        coverArt: "images/zero-meetings-100-uptime.png"
+      },
+      {
+        title: "🖥️ Single Pane of Glass",
+        description: "All systems unified. Nothing missed. The dashboard of dreams.",
+        audio: "audio/single-pane-of-glass.mp3",
+        duration: "7:15",
+        tags: ["Vision", "Clarity", "Control"],
+        coverArt: "images/single-pane-of-glass.png"
+      },
+      {
+        title: "📚 Users Read the Documentation",
+        description: "They follow instructions. Troubleshoot themselves. You rest easy.",
+        audio: "audio/users-read-the-documentation.mp3",
+        duration: "6:30",
+        tags: ["Vision", "Independence", "Peace"],
+        coverArt: "images/users-read-the-documentation.png"
+      }
+    ]
   },
   {
-    title: "🎯 Zero Meetings, 100% Uptime",
-    description: "The perfect day. Nothing breaks. No one calls.",
-    audio: "audio/zero-meetings-100-uptime.mp3",
-    duration: "5:00",
-    tags: ["Focus", "Calm", "Control"],
-    coverArt: "images/zero-meetings-100-uptime.png"
+    category: "Emergency Grounding Tracks",
+    tracks: [
+      {
+        title: "🧘 The Outage is Not Your Fault",
+        description: "Let go of guilt. Accept the chaos. You didn't break it.",
+        audio: "audio/not-your-fault.mp3",
+        duration: "5:45",
+        tags: ["Emergency", "Acceptance", "Release"]
+      },
+      {
+        title: "👑 The CEO Forgot Their Password Again",
+        description: "It's okay. Reset it. Repeat the cycle. Smile.",
+        audio: "audio/ceo-password.mp3",
+        duration: "4:30",
+        tags: ["Emergency", "Patience", "Humor"]
+      },
+      {
+        title: "🔒 VPN Just Works",
+        description: "Remote users log in. No calls. No complaints. Just peace.",
+        audio: "audio/vpn-works.mp3",
+        duration: "5:15",
+        tags: ["Emergency", "Relief", "Stability"]
+      }
+    ]
   },
   {
-    title: "🖥️ Single Pane of Glass",
-    description: "All systems unified. Nothing missed. The dashboard of dreams.",
-    audio: "audio/single-pane-of-glass.mp3",
-    duration: "7:15",
-    tags: ["Vision", "Clarity", "Control"],
-    coverArt: "images/single-pane-of-glass.png"
-  },
-  {
-    title: "📚 Users Read the Documentation",
-    description: "They follow instructions. Troubleshoot themselves. You rest easy.",
-    audio: "audio/users-read-the-documentation.mp3",
-    duration: "6:30",
-    tags: ["Vision", "Independence", "Peace"],
-    coverArt: "images/users-read-the-documentation.png"
-  },
-  {
-    title: "🔄 End User Has Turned It Off and On Again",
-    description: "The classic solution works. The ticket closes itself. Bliss.",
-    audio: "audio/end-user-has-turned-it-off-and-on-again.mp3",
-    duration: "5:45",
-    tags: ["Relief", "Simplicity", "Gratitude"]
-  },
-  {
-    title: "🌐 Everything Pings",
-    description: "All systems respond. No timeouts. Just harmony.",
-    audio: "audio/everything-pings.mp3",
-    duration: "6:00",
-    tags: ["Stability", "Peace", "Control"]
-  },
-  {
-    title: "🔍 DNS is Resolving Perfectly",
-    description: "No more 'cannot resolve hostname'. Just smooth sailing.",
-    audio: "audio/dns-is-resolving-perfectly.mp3",
-    duration: "5:30",
-    tags: ["Relief", "Clarity", "Gratitude"]
+    category: "Bonus Tracks",
+    tracks: [
+      {
+        title: "🖥️ Zen and the Art of Server Maintenance",
+        description: "The fans whisper. The logs are clean. The Zen flows.",
+        audio: "audio/server-maintenance.mp3",
+        duration: "8:30",
+        tags: ["Maintenance", "Peace", "Flow"]
+      },
+      {
+        title: "⌨️ Ctrl + Alt + Delete Your Stress",
+        description: "Reboot your soul. Force quit your anxiety.",
+        audio: "audio/ctrl-alt-delete.mp3",
+        duration: "6:45",
+        tags: ["Quick Fix", "Release", "Reset"]
+      },
+      {
+        title: "🔑 Esc… Just Esc",
+        description: "The escape key is a path to enlightenment.",
+        audio: "audio/just-esc.mp3",
+        duration: "4:00",
+        tags: ["Quick Fix", "Release", "Simplicity"]
+      },
+      {
+        title: "🔔 Let That Alert Go",
+        description: "You've seen the log. You've acknowledged it. Let it float away.",
+        audio: "audio/let-alert-go.mp3",
+        duration: "5:15",
+        tags: ["Release", "Acceptance", "Peace"]
+      },
+      {
+        title: "📶 Ping. Pong. Peace.",
+        description: "Find rhythm in uptime. Back and forth. Connection eternal.",
+        audio: "audio/ping-pong.mp3",
+        duration: "4:45",
+        tags: ["Rhythm", "Connection", "Flow"]
+      },
+      {
+        title: "📈 SLA Nirvana",
+        description: "99.999% uptime. Promised. Delivered. Enlightenment guaranteed.",
+        audio: "audio/sla-nirvana.mp3",
+        duration: "7:00",
+        tags: ["Achievement", "Success", "Peace"]
+      }
+    ]
   }
 ];
 

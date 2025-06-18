@@ -1,159 +1,192 @@
+// App configuration
+const appConfig = {
+  title: "CISO Meditation Suite",
+  subtitle: "Existential Security & Risk Management",
+  description: "A collection of guided meditations for the perpetually vigilant. Because sometimes the only thing between you and a breach is your ability to breathe.",
+  categories: [
+    {
+      name: "Risk Management Serenity",
+      description: "Find peace in the chaos of compliance and audits."
+    },
+    {
+      name: "Board Room Calm",
+      description: "Navigate the treacherous waters of executive communication."
+    },
+    {
+      name: "Incident Response Recovery",
+      description: "Recover from the trauma of security incidents."
+    },
+    {
+      name: "Compliance Meditation",
+      description: "Embrace the eternal cycle of documentation and verification."
+    },
+    {
+      name: "Existential Security",
+      description: "Question everything, trust nothing, find peace in paranoia."
+    }
+  ]
+};
+
 // Meditation tracks data
 const meditationTracks = [
   {
-    category: "Daily De-Stress Sessions",
+    category: "Risk Management Serenity",
     tracks: [
       {
-        title: "🔄 Patch Tuesday Serenity",
-        description: "Updates install flawlessly. Users restart without complaint. Bliss.",
-        audio: "audio/patch-tuesday-serenity.mp3",
+        title: "🔒 No One's Asking for MFA Exceptions Today",
+        description: "User resistance has stopped. You are finally the threat model.",
+        audio: "audio/mfa-exceptions.mp3",
         duration: "7:30",
-        tags: ["Release", "Peace", "Acceptance"],
-        coverArt: "images/patch-tuesday-serenity.png"
+        tags: ["Compliance", "Control", "Acceptance"],
+        coverArt: "images/mfa-exceptions.png"
       },
       {
-        title: "📭 The Ticket Queue is Empty",
-        description: "No new tickets. No follow-ups. Just silence.",
-        audio: "audio/the-ticket-queue-is-empty.mp3",
-        duration: "4:45",
-        tags: ["Relief", "Calm", "Gratitude"],
-        coverArt: "images/the-ticket-queue-is-empty.png"
-      },
-      {
-        title: "🛡️ No One Changed the Firewall Rules",
-        description: "Feel the harmony of untouched config and unbroken access.",
-        audio: "audio/no-one-changed-the-firewall-rules.mp3",
-        duration: "6:15",
-        tags: ["Security", "Peace", "Stability"],
-        coverArt: "images/no-one-changed-the-firewall-rules.png"
-      }
-    ]
-  },
-  {
-    category: "Crisis Calming Interventions",
-    tracks: [
-      {
-        title: "🌐 DNS is Resolving Perfectly",
-        description: "Names become IPs. Fast. Effortless. Divine.",
-        audio: "audio/dns-is-resolving-perfectly.mp3",
-        duration: "5:30",
-        tags: ["Emergency", "Focus", "Resolution"]
-      },
-      {
-        title: "📡 Everything Pings",
-        description: "Every server. Every time. Echo replies of peace.",
-        audio: "audio/everything-pings.mp3",
-        duration: "4:15",
-        tags: ["Network", "Relief", "Stability"]
-      },
-      {
-        title: "🔄 End User Has Turned It Off and On Again",
-        description: "Without being asked. Harmony has been achieved.",
-        audio: "audio/end-user-has-turned-it-off-and-on-again.mp3",
-        duration: "3:45",
-        tags: ["Quick Fix", "Relief", "Gratitude"]
-      }
-    ]
-  },
-  {
-    category: "Vision Boards for Ideal IT States",
-    tracks: [
-      {
-        title: "📊 Zero Meetings, 100% Uptime",
-        description: "Slack is silent. Zoom is down. But everything just works.",
-        audio: "audio/zero-meetings-100-uptime.mp3",
-        duration: "8:00",
-        tags: ["Vision", "Peace", "Productivity"],
-        coverArt: "images/zero-meetings-100-uptime.png"
-      },
-      {
-        title: "🖥️ Single Pane of Glass",
-        description: "All systems unified. Nothing missed. The dashboard of dreams.",
-        audio: "audio/single-pane-of-glass.mp3",
-        duration: "7:15",
-        tags: ["Vision", "Clarity", "Control"],
-        coverArt: "images/single-pane-of-glass.png"
-      },
-      {
-        title: "📚 Users Read the Documentation",
-        description: "They follow instructions. Troubleshoot themselves. You rest easy.",
-        audio: "audio/users-read-the-documentation.mp3",
-        duration: "6:30",
-        tags: ["Vision", "Independence", "Peace"],
-        coverArt: "images/users-read-the-documentation.png"
-      }
-    ]
-  },
-  {
-    category: "Emergency Grounding Tracks",
-    tracks: [
-      {
-        title: "🧘 The Outage is Not Your Fault",
-        description: "Let go of guilt. Accept the chaos. You didn't break it.",
-        audio: "audio/not-your-fault.mp3",
-        duration: "5:45",
-        tags: ["Emergency", "Acceptance", "Release"]
-      },
-      {
-        title: "👑 The CEO Forgot Their Password Again",
-        description: "It's okay. Reset it. Repeat the cycle. Smile.",
-        audio: "audio/ceo-password.mp3",
-        duration: "4:30",
-        tags: ["Emergency", "Patience", "Humor"]
-      },
-      {
-        title: "🔒 VPN Just Works",
-        description: "Remote users log in. No calls. No complaints. Just peace.",
-        audio: "audio/vpn-works.mp3",
-        duration: "5:15",
-        tags: ["Emergency", "Relief", "Stability"]
-      }
-    ]
-  },
-  {
-    category: "Bonus Tracks",
-    tracks: [
-      {
-        title: "🖥️ Zen and the Art of Server Maintenance",
-        description: "The fans whisper. The logs are clean. The Zen flows.",
-        audio: "audio/server-maintenance.mp3",
-        duration: "8:30",
-        tags: ["Maintenance", "Peace", "Flow"]
-      },
-      {
-        title: "⌨️ Ctrl + Alt + Delete Your Stress",
-        description: "Reboot your soul. Force quit your anxiety.",
-        audio: "audio/ctrl-alt-delete.mp3",
+        title: "📊 Audit Complete, Findings: Minor",
+        description: "You've passed. Somehow. Sleep now, warrior.",
+        audio: "audio/audit-complete.mp3",
         duration: "6:45",
-        tags: ["Quick Fix", "Release", "Reset"]
+        tags: ["Relief", "Validation", "Exhaustion"],
+        coverArt: "images/audit-complete.png"
       },
       {
-        title: "🔑 Esc… Just Esc",
-        description: "The escape key is a path to enlightenment.",
-        audio: "audio/just-esc.mp3",
-        duration: "4:00",
-        tags: ["Quick Fix", "Release", "Simplicity"]
+        title: "🌙 No Breaches Reported Overnight",
+        description: "SIEM is quiet. Or is it lying? Either way, rest for now.",
+        audio: "audio/no-breaches.mp3",
+        duration: "8:15",
+        tags: ["Vigilance", "Paranoia", "Peace"],
+        coverArt: "images/no-breaches.png"
+      }
+    ]
+  },
+  {
+    category: "Board Room Calm",
+    tracks: [
+      {
+        title: "👥 You Made the Board Care (Briefly)",
+        description: "They nodded. They asked a follow-up. You felt... seen.",
+        audio: "audio/board-care.mp3",
+        duration: "5:30",
+        tags: ["Validation", "Recognition", "Momentary Peace"],
+        coverArt: "images/board-care.png"
       },
       {
-        title: "🔔 Let That Alert Go",
-        description: "You've seen the log. You've acknowledged it. Let it float away.",
-        audio: "audio/let-alert-go.mp3",
-        duration: "5:15",
-        tags: ["Release", "Acceptance", "Peace"]
-      },
-      {
-        title: "📶 Ping. Pong. Peace.",
-        description: "Find rhythm in uptime. Back and forth. Connection eternal.",
-        audio: "audio/ping-pong.mp3",
+        title: "📈 Budget Approved, No Questions Asked",
+        description: "The impossible has happened. Breathe it in.",
+        audio: "audio/budget-approved.mp3",
         duration: "4:45",
-        tags: ["Rhythm", "Connection", "Flow"]
+        tags: ["Victory", "Relief", "Disbelief"],
+        coverArt: "images/budget-approved.png"
       },
       {
-        title: "📈 SLA Nirvana",
-        description: "99.999% uptime. Promised. Delivered. Enlightenment guaranteed.",
-        audio: "audio/sla-nirvana.mp3",
+        title: "🎯 Risk Metrics All Green (For Now)",
+        description: "The dashboard lies. But let's pretend it doesn't.",
+        audio: "audio/risk-metrics.mp3",
+        duration: "6:00",
+        tags: ["Control", "Illusion", "Peace"],
+        coverArt: "images/risk-metrics.png"
+      }
+    ]
+  },
+  {
+    category: "Incident Response Recovery",
+    tracks: [
+      {
+        title: "🔍 The Intern Didn't Open the Phishing Email",
+        description: "Awareness training... worked?",
+        audio: "audio/intern-phishing.mp3",
+        duration: "5:15",
+        tags: ["Success", "Disbelief", "Relief"],
+        coverArt: "images/intern-phishing.png"
+      },
+      {
+        title: "🛡️ All Endpoints Are Patched (Allegedly)",
+        description: "Believe. Or don't. What matters is the illusion of control.",
+        audio: "audio/endpoints-patched.mp3",
         duration: "7:00",
-        tags: ["Achievement", "Success", "Peace"]
+        tags: ["Control", "Paranoia", "Acceptance"],
+        coverArt: "images/endpoints-patched.png"
+      },
+      {
+        title: "🔐 Zero Critical Vulnerabilities Today",
+        description: "The scanner says you're safe. The scanner might be wrong.",
+        audio: "audio/zero-vulns.mp3",
+        duration: "6:30",
+        tags: ["Relief", "Suspicion", "Peace"],
+        coverArt: "images/zero-vulns.png"
+      }
+    ]
+  },
+  {
+    category: "Compliance Meditation",
+    tracks: [
+      {
+        title: "📜 GDPR Documentation Complete",
+        description: "The paperwork is done. The auditors are satisfied. For now.",
+        audio: "audio/gdpr-complete.mp3",
+        duration: "8:00",
+        tags: ["Compliance", "Relief", "Temporary Peace"],
+        coverArt: "images/gdpr-complete.png"
+      },
+      {
+        title: "🔍 SOC 2 Controls Verified",
+        description: "Everything is documented. Everything is evidence.",
+        audio: "audio/soc2-verified.mp3",
+        duration: "7:15",
+        tags: ["Compliance", "Control", "Validation"],
+        coverArt: "images/soc2-verified.png"
+      },
+      {
+        title: "📋 Vendor Security Assessment Passed",
+        description: "Third-party risk is contained. For this moment.",
+        audio: "audio/vendor-assessment.mp3",
+        duration: "6:45",
+        tags: ["Risk", "Control", "Relief"],
+        coverArt: "images/vendor-assessment.png"
+      }
+    ]
+  },
+  {
+    category: "Existential Security",
+    tracks: [
+      {
+        title: "🌐 The Firewall is Your Friend",
+        description: "It blocks. It allows. It judges. It protects.",
+        audio: "audio/firewall-friend.mp3",
+        duration: "7:30",
+        tags: ["Security", "Trust", "Paranoia"],
+        coverArt: "images/firewall-friend.png"
+      },
+      {
+        title: "🔐 Encryption is Working (Probably)",
+        description: "The math is sound. The implementation is... acceptable.",
+        audio: "audio/encryption-working.mp3",
+        duration: "6:15",
+        tags: ["Security", "Trust", "Doubt"],
+        coverArt: "images/encryption-working.png"
+      },
+      {
+        title: "📊 Threat Intel is Quiet",
+        description: "No new APTs. No zero-days. Just... silence.",
+        audio: "audio/threat-intel.mp3",
+        duration: "5:45",
+        tags: ["Vigilance", "Peace", "Suspicion"],
+        coverArt: "images/threat-intel.png"
+      },
+      {
+        title: "🛡️ The Security Stack is Complete",
+        description: "You have all the tools. They might even work.",
+        audio: "audio/security-stack.mp3",
+        duration: "6:30",
+        tags: ["Control", "Paranoia", "Acceptance"],
+        coverArt: "images/security-stack.png"
+      },
+      {
+        title: "🔍 Logs Show Nothing Suspicious",
+        description: "Either you're secure, or they're really good.",
+        audio: "audio/logs-clean.mp3",
+        duration: "5:15",
+        tags: ["Vigilance", "Paranoia", "Peace"],
+        coverArt: "images/logs-clean.png"
       }
     ]
   }
@@ -384,4 +417,270 @@ document.addEventListener('DOMContentLoaded', () => {
       playTrack(categoryIndex, trackIndex);
     });
   });
+});
+
+// PANIC CALM™ Functionality
+const panicButton = document.getElementById('panicButton');
+const panicModal = document.getElementById('panicModal');
+const panicSession = document.getElementById('panicSession');
+const beginCalmButton = document.getElementById('beginCalm');
+const panicOptions = document.querySelectorAll('.panic-option');
+const progressBar = document.querySelector('.progress-bar');
+const affirmationElement = document.querySelector('.affirmation');
+
+const affirmations = [
+  "The logs will tell the story. Eventually.",
+  "At least it's not a Friday deployment.",
+  "The backup of the backup has a backup.",
+  "This is why we have insurance.",
+  "The cloud is someone else's computer. They'll fix it.",
+  "The incident response plan exists for a reason.",
+  "The board doesn't know what DNS is anyway.",
+  "This is why we get paid the big bucks.",
+  "The audit will find someone else to blame.",
+  "At least it's not a zero-day. Yet."
+];
+
+let selectedTrigger = null;
+let sessionInterval = null;
+
+// Open modal
+panicButton.addEventListener('click', () => {
+  panicModal.classList.add('active');
+});
+
+// Handle option selection
+panicOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    panicOptions.forEach(opt => opt.classList.remove('selected'));
+    option.classList.add('selected');
+    selectedTrigger = option.dataset.trigger;
+    beginCalmButton.disabled = false;
+  });
+});
+
+// Begin calm session
+beginCalmButton.addEventListener('click', () => {
+  panicModal.classList.remove('active');
+  panicSession.classList.add('active');
+  
+  let progress = 0;
+  let affirmationIndex = 0;
+  
+  sessionInterval = setInterval(() => {
+    progress += 1;
+    progressBar.style.width = `${progress}%`;
+    
+    if (progress % 10 === 0) {
+      affirmationElement.textContent = affirmations[affirmationIndex];
+      affirmationIndex = (affirmationIndex + 1) % affirmations.length;
+    }
+    
+    if (progress >= 100) {
+      clearInterval(sessionInterval);
+      setTimeout(() => {
+        panicSession.classList.remove('active');
+        progressBar.style.width = '0%';
+        selectedTrigger = null;
+        beginCalmButton.disabled = true;
+        panicOptions.forEach(opt => opt.classList.remove('selected'));
+      }, 1000);
+    }
+  }, 90); // 90 seconds total
+});
+
+// Share functionality
+document.querySelector('.share-button.slack').addEventListener('click', () => {
+  const message = `Launched Panic Calm™ after ${selectedTrigger === '2fa' ? '2FA was bypassed' :
+    selectedTrigger === 'cve' ? 'a critical CVE dropped' :
+    selectedTrigger === 'slack' ? 'seeing a "quick question" in Slack' :
+    'opening Jira'}.`;
+  // Implement Slack sharing
+  console.log('Share to Slack:', message);
+});
+
+document.querySelector('.share-button.linkedin').addEventListener('click', () => {
+  const message = `Launched Panic Calm™ after ${selectedTrigger === '2fa' ? '2FA was bypassed' :
+    selectedTrigger === 'cve' ? 'a critical CVE dropped' :
+    selectedTrigger === 'slack' ? 'seeing a "quick question" in Slack' :
+    'opening Jira'}.`;
+  // Implement LinkedIn sharing
+  console.log('Share to LinkedIn:', message);
+});
+
+// Patch Notes for the Soul
+const patchNotes = [
+  {
+    version: '🛠 v3.2.1 – "Please Hold" Release',
+    changes: [
+      'Paused intrusive thoughts during Zoom updates',
+      'Reduced severity of Slack messages sent after 10pm',
+      'Added grace period for coffee delays'
+    ],
+    meditation: 'You Made the Board Care (Briefly)'
+  },
+  {
+    version: '🔐 v5.0.0 – "Zero Trust, Full Burnout" Patch',
+    changes: [
+      'Hardened mental defenses against vague Jira tickets',
+      'Removed unnecessary emotional logging',
+      'Finally accepted that no one reads the SOC2 report'
+    ],
+    meditation: 'The Audit is Coming (From Within)'
+  },
+  {
+    version: '🧘 v6.9.4 – "Spiritual Hotfix"',
+    changes: [
+      'Mitigated mild imposter syndrome via deep breathing',
+      'Upgraded patience module (temporary)',
+      'Rate-limited eye twitch to 5 per hour'
+    ],
+    meditation: 'Finding Zen in the Logs'
+  },
+  {
+    version: '🔄 v4.2.0 – "Incident Response" Update',
+    changes: [
+      'Implemented emergency coffee protocol',
+      'Reduced alert fatigue by 42%',
+      'Added support for 3am existential crises'
+    ],
+    meditation: 'The On-Call Never Ends'
+  },
+  {
+    version: '🔒 v7.1.3 – "Security Theater" Release',
+    changes: [
+      'Enhanced compliance documentation visualization',
+      'Optimized security awareness training avoidance',
+      'Added new layer of security by obscurity'
+    ],
+    meditation: 'Compliance is a State of Mind'
+  }
+];
+
+let currentPatchIndex = 0;
+const patchNoteCard = document.querySelector('.patch-note-card');
+const sharePatchButton = document.querySelector('.share-patch');
+const savePatchButton = document.querySelector('.save-patch');
+
+function updatePatchNote() {
+  const patch = patchNotes[currentPatchIndex];
+  
+  patchNoteCard.innerHTML = `
+    <div class="patch-note-header">
+      <h3 class="version">${patch.version}</h3>
+      <div class="patch-actions">
+        <button class="share-patch" title="Share to Slack or LinkedIn">🔁</button>
+        <button class="save-patch" title="Save to Favorites">💾</button>
+      </div>
+    </div>
+    <ul class="patch-changes">
+      ${patch.changes.map(change => `<li>${change}</li>`).join('')}
+    </ul>
+    <div class="patch-footer">
+      <a href="#" class="suggested-meditation">
+        🎧 Suggested meditation: "${patch.meditation}"
+      </a>
+    </div>
+  `;
+  
+  // Reattach event listeners
+  attachPatchNoteListeners();
+}
+
+function attachPatchNoteListeners() {
+  const shareButton = patchNoteCard.querySelector('.share-patch');
+  const saveButton = patchNoteCard.querySelector('.save-patch');
+  const meditationLink = patchNoteCard.querySelector('.suggested-meditation');
+  
+  shareButton.addEventListener('click', () => {
+    const patch = patchNotes[currentPatchIndex];
+    const message = `📄 Patch Notes for the Soul\n\n${patch.version}\n\n${patch.changes.join('\n')}\n\n🎧 Suggested meditation: "${patch.meditation}"`;
+    
+    // Create share modal
+    const shareModal = document.createElement('div');
+    shareModal.className = 'share-modal';
+    shareModal.innerHTML = `
+      <div class="share-modal-content">
+        <h3>Share Patch Notes</h3>
+        <div class="share-options">
+          <button class="share-button slack">Share to Slack</button>
+          <button class="share-button linkedin">Share to LinkedIn</button>
+        </div>
+        <button class="close-modal">×</button>
+      </div>
+    `;
+    
+    document.body.appendChild(shareModal);
+    
+    // Handle share options
+    shareModal.querySelector('.share-button.slack').addEventListener('click', () => {
+      console.log('Share to Slack:', message);
+      shareModal.remove();
+    });
+    
+    shareModal.querySelector('.share-button.linkedin').addEventListener('click', () => {
+      console.log('Share to LinkedIn:', message);
+      shareModal.remove();
+    });
+    
+    shareModal.querySelector('.close-modal').addEventListener('click', () => {
+      shareModal.remove();
+    });
+  });
+  
+  saveButton.addEventListener('click', () => {
+    const patch = patchNotes[currentPatchIndex];
+    // Implement save functionality
+    console.log('Save patch:', patch);
+    saveButton.textContent = '✓';
+    setTimeout(() => {
+      saveButton.textContent = '💾';
+    }, 2000);
+  });
+  
+  meditationLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    const patch = patchNotes[currentPatchIndex];
+    // Implement meditation navigation
+    console.log('Navigate to meditation:', patch.meditation);
+  });
+}
+
+// Rotate patch notes every 30 seconds
+setInterval(() => {
+  currentPatchIndex = (currentPatchIndex + 1) % patchNotes.length;
+  updatePatchNote();
+}, 30000);
+
+// Initial patch note
+updatePatchNote();
+
+// Release Notes Modal
+const releaseNotesButton = document.querySelector('.release-notes-button');
+const releaseNotesModal = document.querySelector('.release-notes-modal');
+const modalCloseButton = releaseNotesModal.querySelector('.close-modal');
+
+releaseNotesButton.addEventListener('click', () => {
+  releaseNotesModal.classList.add('active');
+  // Reset to first patch note when opening
+  currentPatchIndex = 0;
+  updatePatchNote();
+});
+
+modalCloseButton.addEventListener('click', () => {
+  releaseNotesModal.classList.remove('active');
+});
+
+// Close modal when clicking outside
+releaseNotesModal.addEventListener('click', (e) => {
+  if (e.target === releaseNotesModal) {
+    releaseNotesModal.classList.remove('active');
+  }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && releaseNotesModal.classList.contains('active')) {
+    releaseNotesModal.classList.remove('active');
+  }
 }); 

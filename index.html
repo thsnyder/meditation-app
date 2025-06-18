@@ -10,9 +10,43 @@
 <body>
   <div class="container">
     <header class="header">
-      <h1 class="title">🧘‍♂️Calmmand Line</h1>
-      <p class="subtitle">The world's first Meditation App for IT Managers.<br>Find your inner peace in the chaos of IT management. Breathe in, breathe out, and remember: the server is always listening.</p>
+      <div class="title">
+        <h1>🧘‍♂️Calmmand Line</h1>
+      </div>
+      <button class="release-notes-button" title="View Release Notes">📄</button>
+      <p class="subtitle">Existential Security & Risk Management.<br>The world's first Meditation App for InfoSec leaders.<br>Find your inner peace in the chaos of security leadership. Breathe in, breathe out, and remember: the logs are always watching.</p>
     </header>
+
+    <!-- Release Notes Modal -->
+    <div class="release-notes-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>📄 (Emotional) Release Notes</h2>
+          <button class="close-modal">×</button>
+        </div>
+        <div class="patch-notes-carousel">
+          <div class="patch-note-card">
+            <div class="patch-note-header">
+              <h3 class="version">🛠 v3.2.1 – "Please Hold" Release</h3>
+              <div class="patch-actions">
+                <button class="share-patch" title="Share to Slack or LinkedIn">🔁</button>
+                <button class="save-patch" title="Save to Favorites">💾</button>
+              </div>
+            </div>
+            <ul class="patch-changes">
+              <li>Paused intrusive thoughts during Zoom updates</li>
+              <li>Reduced severity of Slack messages sent after 10pm</li>
+              <li>Added grace period for coffee delays</li>
+            </ul>
+            <div class="patch-footer">
+              <a href="#" class="suggested-meditation">
+                🎧 Suggested meditation: "You Made the Board Care (Briefly)"
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <main>
       <!-- Cards will be dynamically inserted here -->
@@ -48,6 +82,58 @@
         <button class="control-button next" title="Next Track">
           <i class="fas fa-forward-step text-xl"></i>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANIC CALM™ Button -->
+  <button id="panicButton" class="panic-button">
+    🧯 PANIC CALM
+    <span class="panic-subtitle">Tap when you've seen too much</span>
+  </button>
+
+  <!-- PANIC CALM™ Modal -->
+  <div id="panicModal" class="panic-modal">
+    <div class="panic-modal-content">
+      <h2 class="panic-title">💥 You good?</h2>
+      <p class="panic-subtext">Looks like something broke. Or someone did. Either way…</p>
+      
+      <div class="panic-options">
+        <button class="panic-option red" data-trigger="2fa">
+          🔴 User bypassed 2FA again
+        </button>
+        <button class="panic-option blue" data-trigger="cve">
+          🔵 Critical CVE just dropped
+        </button>
+        <button class="panic-option yellow" data-trigger="slack">
+          🟡 I saw a Slack message that says 'quick question'
+        </button>
+        <button class="panic-option black" data-trigger="jira">
+          ⚫ I opened Jira. That's it. That's the trigger.
+        </button>
+      </div>
+
+      <button id="beginCalm" class="begin-calm-button" disabled>
+        🧘‍♂️ Begin 90-second emergency calm-down
+      </button>
+    </div>
+  </div>
+
+  <!-- PANIC CALM™ Session Screen -->
+  <div id="panicSession" class="panic-session">
+    <div class="panic-session-content">
+      <h2>Welcome to PANIC CALM™</h2>
+      <p class="session-subtext">Deep breaths. You'll fix it. Or someone else will. Eventually.</p>
+      
+      <div class="progress-container">
+        <div class="progress-bar"></div>
+      </div>
+      
+      <div class="affirmation"></div>
+      
+      <div class="share-options">
+        <button class="share-button slack">Share to Slack</button>
+        <button class="share-button linkedin">Share to LinkedIn</button>
       </div>
     </div>
   </div>

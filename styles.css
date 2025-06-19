@@ -495,10 +495,10 @@
     margin: 0;
   }
 
-  /* Category section spacing */
+  /* Content section spacing */
   .mb-16 {
-    margin-bottom: 6rem;
-    padding: 2rem 0;
+    margin-bottom: 8rem;
+    padding: 3rem 0;
     position: relative;
   }
 
@@ -515,6 +515,17 @@
       rgba(255, 62, 62, 0.2) 50%, 
       transparent 100%
     );
+  }
+
+  /* Additional spacing for main content */
+  main {
+    padding: 2rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 
   /* PANIC CALM™ Button */
